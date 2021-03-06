@@ -10,19 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_195646) do
-
-  create_table "notes", force: :cascade do |t|
-    t.string "name"
-    t.string "content"
-    t.datetime "created_at"
-    t.datetime "due_by"
-    t.integer "user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
