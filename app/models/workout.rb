@@ -1,4 +1,4 @@
-class Note < ActiveRecord::Base
+class Workout < ActiveRecord::Base
     belongs_to :user
-    validates_presence_of :name, :content
+    validates_presence_of :name, :description
 end

@@ -10,6 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_03_06_195646) do
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "calories_burned"
+    t.string "length"
+    t.datetime "created_at"
+    t.integer "user_id"
+  end
 
 end
