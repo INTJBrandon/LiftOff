@@ -1,0 +1,18 @@
+
+<h2>Workout: <%=@workout.name%></h2>
+<h3>Description: <%=@workout.description%></h3>
+<h3>Calories Burned: <%=@workout.calories_burned%></h3>
+<h3>Length: <%=@workout.length%> Minutes</h3>
+<h3>Finished: <%=@workout.created_at.strftime("%l:%M %p, %B %d")%></h3>
+
+
+
+<% if current_user.id == @workout.user_id%>
+    <a href="/workouts/<%=@workout.id%>/edit">Edit</a>
+    <form action="/workouts/<%=@workout.id%>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Article?">
+    </form>
+<%end%>
+
+<p>Completed By: <%=@owner.username.capitalize%></p>

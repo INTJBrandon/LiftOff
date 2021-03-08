@@ -15,6 +15,8 @@ class UserController < ApplicationController
 
         if params[:username].empty? || params[:password].empty?
             redirect :'user/signup'
+        elsif User.find_by(username: params[:username])
+            redirect :'/signup'
         else 
             @user = User.create(params)
             session[:user_id] = @user.id
@@ -37,7 +39,7 @@ class UserController < ApplicationController
             session[:user_id] = user.id
             redirect :'/profile'
         else 
-            erb :'/users/login'
+            erb :'/user/login'
         end
     end 
 
@@ -45,18 +47,28 @@ class UserController < ApplicationController
         if logged_in?
             @user = current_user
             
-            erb :'/user/show'
+            erb :'/user/profile'
             
         else
             redirect :'/login'
         end
     end
 
+    get '/users' do
+        @users = User.all
+        erb :'/user/index'
+    end
+
     get '/users/:id' do
-        if logged_in? && params[:id] == session[:user_id]
+        if profile?
             redirect :'/profile'
         else
+            @user = User.find_by(id: params[:id])
+            erb :'/user/show'
             
+        end
+    end
+
 
 
     get '/logout' do

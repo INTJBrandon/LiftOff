@@ -1,0 +1,18 @@
+<h1>EDIT WORKOUT</h1>
+
+<form action="/workouts/<%= @workout.id %>" method="POST">
+  <input type="hidden" name="_method" value="patch">
+  <label>Workout Name: </label>
+  <input type="text" name="workout[name]" value="<%=@workout.name%>">
+  <br>
+  <label>Workout Description: </label>
+  <input type="text" name="workout[description]"  value="<%=@workout.description%>">
+  <br>
+  <label>Calories Burned: </label>
+  <input type="text" name="workout[calories_burned]"  value="<%=@workout.calories_burned%>">
+  <br>
+  <label>Workout Length: </label>
+  <input type="text" name="workout[length]"  value="<%=@workout.length%>">
+  <br>
+  <input type="submit">
+</form>

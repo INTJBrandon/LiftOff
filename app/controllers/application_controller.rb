@@ -10,6 +10,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    if logged_in?
+      redirect :'/profile'
+    end
     erb :index
   end
 
@@ -21,4 +24,16 @@ class ApplicationController < Sinatra::Base
       session.key?(:user_id)
   end
 
+  def redirect_if_not_logged_in
+    redirect '/login' unless current_user
+end
+
+  def profile?
+    profile_id = params[:id].to_i
+    logged_in? && profile_id == session[:user_id]
+  end
+
+  def set_workout
+    @workout = Workout.find_by(id: params[:id])
+  end
 end

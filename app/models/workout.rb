@@ -1,4 +1,5 @@
 class Workout < ActiveRecord::Base
     belongs_to :user
-    validates_presence_of :name, :description
+    validates_presence_of :name, :description, :length
+    
 end
