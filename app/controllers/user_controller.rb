@@ -75,4 +75,5 @@ class UserController < ApplicationController
         session.clear
         erb :index
     end
+
 end

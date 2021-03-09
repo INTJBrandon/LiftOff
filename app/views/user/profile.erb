@@ -1,9 +1,9 @@
 <h1>Welcome, <%=@user.username.capitalize%>!</h1>
+<h3>Workouts done by you!</h3>
 <% @user.workouts.each do |workout| %>
     <a href="/workouts/<%=workout.id%>"><%=workout.name%></a>
     <br>
     <br>
 <%end%>
 <br>
-<a href="/logout">Logout!</a>
 
