@@ -33,7 +33,7 @@ class WorkoutController < ApplicationController
         redirect_if_not_logged_in
 
         set_workout
-        if current_user.id != @workout.user_id
+        if !owner?
             redirect :'/workouts/:id'
         end
         erb :'workout/edit'
@@ -42,7 +42,7 @@ class WorkoutController < ApplicationController
     patch '/workouts/:id' do
         redirect_if_not_logged_in
         set_workout
-        if current_user.id != @workout.user_id
+        if !owner?
             redirect :'/workout/:id'
         end
         @workout.update(params[:workout])
@@ -53,7 +53,7 @@ class WorkoutController < ApplicationController
     delete '/workouts/:id' do
         redirect_if_not_logged_in
         set_workout
-        if current_user.id != @workout.user_id
+        if !owner?
             redirect :'/workout/:id'
         end
         @workout.delete

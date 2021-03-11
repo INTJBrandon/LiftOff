@@ -36,4 +36,8 @@ end
   def set_workout
     @workout = Workout.find_by(id: params[:id])
   end
+
+  def owner?
+    current_user.id == @workout.user_id
+  end
 end
