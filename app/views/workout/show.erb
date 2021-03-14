@@ -7,7 +7,7 @@
 
 
 
-<% if current_user.id == @workout.user_id%>
+<% if owner?%>
     <a href="/workouts/<%=@workout.id%>/edit">Edit</a>
     <form action="/workouts/<%=@workout.id%>" method="post">
         <input type="hidden" name="_method" value="DELETE">
